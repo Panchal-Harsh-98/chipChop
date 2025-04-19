@@ -1,12 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import DrawerItems from '../constants/DrawerItems';
+import ProfileScreen from '../screens/Profile';
+import SettingsScreen from '../screens/Settings';
 
+const Drawer = createDrawerNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style='auto' />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator drawerType='front' initialRouteName='Profile'>
+        {DrawerItems.map((drawerItem) => (
+          <Drawer.Screen
+            key={drawerItem.name}
+            name={drawerItem.name}
+            component={
+              drawerItem.name === 'Profile' ? ProfileScreen : SettingsScreen
+            }
+          />
+        ))}
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
