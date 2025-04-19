@@ -1,4 +1,4 @@
-export default {[
-    {name: 'Profile', icon: 'home', route: 'Home'},
-    {name: 'Settings', icon: 'settings', route: 'Settings'}
-]
+export default [
+  { name: 'Profile', icon: 'home', route: 'Home' },
+  { name: 'Settings', icon: 'settings', route: 'Settings' },
+];
